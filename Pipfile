@@ -11,13 +11,13 @@ sphinx = "*"
 twine = "*"
 bump2version = "*"
 nox = "*"
-
 pytest = "*"
 pytest-runner = "*"
 pytest-watch = "*"
 
-
 [packages]
+pandas = "*"
+jupyter-commons = "*"
 
 [requires]
 python_version = "3.8"
