@@ -1,16 +1,16 @@
 ===========
-loganalyzer
+loganalysis
 ===========
 
 
-.. image:: https://img.shields.io/pypi/v/loganalyzer.svg
-        :target: https://pypi.python.org/pypi/loganalyzer
+.. image:: https://img.shields.io/pypi/v/loganalysis.svg
+        :target: https://pypi.python.org/pypi/loganalysis
 
-.. image:: https://img.shields.io/travis/stbraun/loganalyzer.svg
-        :target: https://travis-ci.org/stbraun/loganalyzer
+.. image:: https://img.shields.io/travis/stbraun/loganalysis.svg
+        :target: https://travis-ci.org/stbraun/loganalysis
 
-.. image:: https://readthedocs.org/projects/loganalyzer/badge/?version=latest
-        :target: https://loganalyzer.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/loganalysis/badge/?version=latest
+        :target: https://loganalysis.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
@@ -20,7 +20,7 @@ Functions helping with analysis of log files.
 
 
 * Free software: MIT license
-* Documentation: https://loganalyzer.readthedocs.io.
+* Documentation: https://loganalysis.readthedocs.io.
 
 
 Features

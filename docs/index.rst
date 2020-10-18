@@ -1,4 +1,4 @@
-Welcome to loganalyzer's documentation!
+Welcome to loganalysis' documentation!
 ======================================
 
 .. toctree::

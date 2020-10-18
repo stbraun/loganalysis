@@ -11,11 +11,11 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = ['jupyter_commons']
 
-setup_requirements = ['pytest-runner', ]
+setup_requirements = ['pytest-runner', 'nox']
 
-test_requirements = ['pytest', ]
+test_requirements = ['pytest', 'nox']
 
 setup(
     author="Stefan Braun",
@@ -35,13 +35,13 @@ setup(
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='loganalyzer',
-    name='loganalyzer',
-    packages=find_packages(include=['loganalyzer']),
+    keywords='loganalysis',
+    name='loganalysis',
+    packages=find_packages(include=['loganalysis']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/stbraun/loganalyzer',
+    url='https://github.com/stbraun/loganalysis',
     version='0.1.0',
     zip_safe=False,
 )

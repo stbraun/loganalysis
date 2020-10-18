@@ -2,14 +2,16 @@
 
 language: python
 python:
-  - 3.6
   - 3.7
-
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
-
-# Command to run tests, e.g. python setup.py test
-script: tox
+  - 3.8
+before_install:
+    - pip install -U pipenv
+    - pipenv install --dev
+install: skip
+script:
+    - make lint
+    - make test
+    - make docs
 
 # Assuming you have installed the travis-ci CLI tool, after you
 # create the Github repo and add it to Travis, run the
@@ -20,8 +22,8 @@ deploy:
   distributions: sdist bdist_wheel
   user: stbraun
   password:
-    secure: PLEASE_REPLACE_ME
+      secure: Dr1gjXEvygCgsF7LZ9oNzJY9x+Dwta4QUlQzYvyLTbreGe/U0TC0HF3snygUISFh8sZQyrm+o3vDubpCQIXfF7vhiN4LciYckr2kvAQA7PZ6mInE4HNaOz5/HteqmgqWXi7SNoX5+5r7FfroKlGlt74MgvDH6LubkaFIVnE9IexMySADwk6uRjMJhb0ZyV2Avh4Nsxb6imQPe3Op9oe1MqLQ5kJ3ZGEEC984qA6kcTmXCo8pHq6hi/hdwOwimtUWLyh9Wx4yvkX2xAZJtrNz+pplrSrdZDK+cMyX15AwkM9x2q9bb3pby2C537tx9PzHryjQjWNU6DZFMpXJp88rOx0yoR0h/PCpI3YdcK1YkgkHh0xTCXL6tVyGKu2s0jqW9pKINRG02nCs0TIrhqgPQCkqFw8LiwfPsHHvbwiz1XrNbOoeaUdBeEmAEcDh8rd6ETRX2LQVHKGtcoADgDrT2EWllYZg9a47Pst8rUkgaUuDKzoa4sTANRnLSBo6reIjNreymJVqTK+rg/VPFDWwGz5fXS1NaMMMY+/1ltiZZkw/CCNmTQpLP5YhFjEU6/Kie21tLj+eT5JnUglJKk8yvc/foOMKrHdAbUqN54UVESNToi0HZA3MBtbfopy8CRXMOwUcnwiQCum4Jqx6ywTz2GvW2UOxYmyyo9nm+hqW+wk=
   on:
     tags: true
-    repo: stbraun/loganalyzer
-    python: 3.7
+    repo: stbraun/loganalysis
+    python: 3.8

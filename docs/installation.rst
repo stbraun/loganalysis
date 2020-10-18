@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install loganalyzer, run this command in your terminal:
+To install loganalysis, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install loganalyzer
+    $ pip install loganalysis
 
-This is the preferred method to install loganalyzer, as it will always install the most recent stable release.
+This is the preferred method to install loganalysis, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for loganalyzer can be downloaded from the `Github repo`_.
+The sources for loganalysis can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/stbraun/loganalyzer
+    $ git clone git://github.com/stbraun/loganalysis
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/stbraun/loganalyzer/tarball/master
+    $ curl  -OL https://github.com/stbraun/loganalysis/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/stbraun/loganalyzer
-.. _tarball: https://github.com/stbraun/loganalyzer/tarball/master
+.. _Github repo: https://github.com/stbraun/loganalysis
+.. _tarball: https://github.com/stbraun/loganalysis/tarball/master

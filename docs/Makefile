@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = loganalyzer
+SPHINXPROJ    = loganalysis
 SOURCEDIR     = .
 BUILDDIR      = _build
 

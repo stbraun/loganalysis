@@ -5,7 +5,7 @@
 
 import re
 import pytest
-from loganalyzer import loganalysis
+from loganalysis import loganalysis
 
 
 @pytest.mark.parametrize(

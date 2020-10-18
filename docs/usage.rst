@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use loganalyzer in a project::
+To use loganalysis in a project::
 
-    import loganalyzer
+    import loganalysis

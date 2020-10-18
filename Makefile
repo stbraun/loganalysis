@@ -56,16 +56,16 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr reports/
 
 lint: | reports ## check style with flake8
-	flake8 --output-file $(FLAKE8_REPORT) --benchmark --count --statistics loganalyzer tests
+	flake8 --output-file $(FLAKE8_REPORT) --benchmark --count --statistics loganalysis tests
 
 test: | reports ## run tests quickly with the default Python
-	pytest --doctest-modules --junit-xml=$(TEST_REPORT) loganalyzer tests
+	pytest --doctest-modules --junit-xml=$(TEST_REPORT) loganalysis tests
 
 test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source loganalyzer -m pytest
+	coverage run --source loganalysis -m pytest
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
@@ -74,9 +74,9 @@ reports:
 	mkdir -p $(REPORTS_DIR)
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/loganalyzer.rst
+	rm -f docs/loganalysis.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ loganalyzer
+	sphinx-apidoc -o docs/ loganalysis
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
