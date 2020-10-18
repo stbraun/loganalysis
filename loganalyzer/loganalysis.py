@@ -28,7 +28,7 @@ async def read_log(log_file):
                 more = True
 
 
-def dequalify(qualified):
+def de_qualify(qualified):
     """Takes a name with package, class and method and removes the package.
 
     Useful for Java classes.
@@ -45,8 +45,9 @@ def dequalify(qualified):
 async def extract_info(log_file):
     """Extract log information.
 
-    To annotate a logfile with comments just add lines starting with ###.
-    Lines starting with ### are extracted and returned as list of these lines.
+    To annotate a logfile with comments just add lines starting with `###`.
+    Lines starting with `###` are extracted and returned as list of these lines.
+    One line holding the name of the log file is added.
 
     :param log_file: path to log file.
     :type log_file: str
@@ -79,13 +80,14 @@ async def print_info(log_file):
 async def extract_matches(log_file, regex, with_timestamp=False):
     """Extract lines matching given regular expression.
 
-    If there is a group specified in regex, only the group is extracted.
+    If there is a group specified in regex, only the group is extracted. If
+    'with_timestamp' is True timestamp of the item is prepended to group.
 
     :param log_file: path to log file.
     :type log_file: str
     :param regex: regular expression a line needs to match.
     :type regex: str
-    :param with_timestamp: True to prepend log timestamp.
+    :param with_timestamp: True to prepend log timestamp in case of group match.
     :type with_timestamp: bool
     :return: list of matching lines.
     :rtype: [str]
@@ -122,34 +124,33 @@ async def print_matches(
     :type unique: bool
     :param msg: string describing the matched object, e.g. 'exception'
     :type msg: str
-    :param with_tinestamp: True to prepend log timestamp.
+    :param with_timestamp: True to prepend log timestamp.
     :type with_timestamp: bool
     :return: matched lines
     :rtype: [str]
     """
-    ulines = None
+    unique_lines = None
     lines = await extract_matches(log_file, regex, with_timestamp)
     if msg is None:
         msg = f"regex '{regex}'"
     if unique:
-        ulines = set(lines)
+        unique_lines = set(lines)
         print_md(
-            f"**{len(ulines)}** unique of **{len(lines)}** total lines found for {msg}."
+            f"**{len(unique_lines)}** unique of **{len(lines)}** total lines found for {msg}."
         )
     else:
         print_md(f"**{len(lines)}** entries found for {msg}.")
     print()
-    plines = ulines if unique else lines
+    processed_lines = unique_lines if unique else lines
     if sort:
-        plines = list(plines)
-        plines.sort()
-    for line in plines:
+        processed_lines = sorted(list(processed_lines))
+    for line in processed_lines:
         print(line)
-    return plines
+    return processed_lines
 
 
 async def extract_levels(log_file, levels, include_thread=True):
-    """Extract all error logs.
+    """Extract all logs matching levels.
 
     Logs that occur multiple times (timestamp excluded) will be reported once
     with a count of the occurrences.
@@ -160,8 +161,8 @@ async def extract_levels(log_file, levels, include_thread=True):
     :type levels: str or [str]
     :param include_thread: consider thread when comparing two logs.
     :type include_thread: bool
-    :return: dictionary of error logs and counts.
-    :rtype: {int: (int, str)}
+    :return: dictionary of logs and counts.
+    :rtype: dict[int: (int, str)]
     """
     logs = {}  # id: (count, log)
     log_id = 0
@@ -202,7 +203,7 @@ async def print_errors(log_file, include_thread=False):
 async def extract_stacks(log_file):
     """Extract all stack traces from log file.
 
-    Stack traces that occurr multiple times times will be extracted once
+    Stack traces that occur multiple times times will be extracted once
     with a count of their occurrence.
 
     :param log_file: path to log file.
@@ -211,6 +212,7 @@ async def extract_stacks(log_file):
     :rtype: {int: (int, [str])}
     """
     in_stack = False
+    stack = None
     stacks = {}  # id: stack
     stack_id = 0
     rex = r"\s?at\s([A-Za-z][\w\.\$\<\>]+)"
@@ -223,7 +225,7 @@ async def extract_stacks(log_file):
                 in_stack = True
                 stack = []
             item = result.group(1)
-            entry = dequalify(item) + "()"
+            entry = de_qualify(item) + "()"
             res_ln = re.search(rex_ln, line)
             if res_ln:
                 line_num = res_ln.group(1)
@@ -246,7 +248,7 @@ async def extract_stacks(log_file):
 async def print_stacks(log_file):
     """Print all stack traces from log file.
 
-    Stack traces that occurr multiple times times will be printed once
+    Stack traces that occur multiple times times will be printed once
     with a count of their occurrence.
 
     :param log_file: path to log file.
@@ -271,7 +273,7 @@ async def print_exceptions(log_file, sort=False, unique=False):
     :param unique: True to print only unique exceptions.
     :type unique: bool
     """
-    await print_matches(log_file, r"\s(\w*Exception\w*)[^\w]", unique=unique)
+    await print_matches(log_file, r"\s(\w*Exception\w*)[^\w]", unique=unique, sort=sort)
 
 
 def extract_timestamp(line):
