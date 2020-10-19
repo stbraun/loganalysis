@@ -1,0 +1,50 @@
+2020-10-05 03:54:50,735 EDT [AWT-EventQueue-0] ERROR UnexpectedRuntimeExceptionHandler:85 - ### <UNEXPECTED_EXCEPTION> ### An internal error has occurred. Please contact your system administrator.
+java.lang.IllegalStateException: close view, before displaying exception view
+	at com.company.mes.apps.ebr.impl.cockpit.CockpitControllerViewHandling.displayExceptionView(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.displayException(Unknown Source)
+2020-10-05 03:54:50,746 EDT [AWT-EventQueue-0]  WARN ClientTerminatorService:? - An unhandled exception occurred. Exception is of type java.lang.IllegalStateException: java.lang.IllegalStateException: close view, before displaying exception view
+2020-10-05 03:55:11,324 EDT [Thread-34]  INFO ShutDownHookThread:? - Shutdown of client.
+2020-10-09 09:34:23,502 EDT [Background-workerthread-1] ERROR DynamicProxyInvocationHandler:150 - Thread waiting for message reply was interrupted
+Equipment details:[Identifier:IBOX-018 AIServerName:AutomationIntegrationServer1 LDAreaPath:RNA://$Global/LiveDataArea Description:HCM Sorter 01]
+com.company.mes.services.s88equipment.ifc.exceptions.AutomationInterruptedException: Thread waiting for message reply was interrupted
+Equipment details:[Identifier:IBOX-018 AIServerName:AutomationIntegrationServer1 LDAreaPath:RNA://$Global/LiveDataArea Description:HCM Sorter 01]
+	at com.company.mes.services.s88equipment.impl.automation.AutomationService.monitorValue(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor643.invoke(Unknown Source)
+2020-10-09 09:35:51,809 EDT [Thread-34]  INFO ShutDownHookThread:? - Shutdown of client has been executed by user test user (user18) on work center HCM-018, station HCM-018.
+2020-10-09 10:37:20,512 EDT [AWT-EventQueue-0]  INFO ShutDownHookThread:? - Startup of client has been executed by user test user (user18) on work center HCM-018, station HCM-018.
+2020-10-09 10:48:00,462 EDT [AWT-EventQueue-0]  WARN PhaseLocationIdentificationCheck:58 - ct_AllowedLocationsForIdentfication isn't set
+2020-10-09 10:48:01,531 EDT [AWT-EventQueue-0]  WARN PhaseLocationIdentificationCheck:58 - ct_AllowedLocationsForIdentfication isn't set
+2020-10-09 10:48:02,377 EDT [AWT-EventQueue-0]  WARN ConsumeAndSendConsumptionToSap:445 - No OSI for position 'P-CARTON' found.
+2020-10-09 10:48:02,689 EDT [AWT-EventQueue-0]  WARN EihOutboundService:155 - Suppress sending when quantity is 0
+2020-10-09 10:48:03,143 EDT [AWT-EventQueue-0]  WARN ConsumeAndSendConsumptionToSap:445 - No OSI for position 'GLIDE' found.
+2020-10-09 10:48:03,143 EDT [AWT-EventQueue-0]  WARN ConsumeAndSendConsumptionToSap:325 - No Consumptions found!
+2020-10-09 13:51:20,292 EDT [AWT-EventQueue-0]  WARN PacketService:893 - LibraryHolder/services-packaging-impl.jar/PacketService.preparePacketProduction.aggregatePacketInfo: false
+2020-10-09 14:51:50,640 EDT [AWT-EventQueue-0]  WARN PacketService:893 - LibraryHolder/services-packaging-impl.jar/PacketService.preparePacketProduction.aggregatePacketInfo: false
+2020-10-12 11:34:37,136 EDT [ServerHeartbeatChecker-1] ERROR ServerHeartbeatChecker:? - There is at least one server with a heartbeat issue:
+ServerHeartbeatStatusBean [eventSheetName=PharmaSuite_AI_Server, serverNodeID=1, numberOfNodes=1, hostName=USGWMES-03P-I07, processName=12824@USGWMES-03P-I07, logicalServerName=AutomationIntegrationServer1, deviceName=null, stationName=null, heartbeatInterval=60, lastHeartbeat=10/12/2020 11:32:24 AM EDT, heartbeatStatus=STATUS_ERROR, brokerInTime=10/12/2020 11:32:24 AM EDT, checkerReceiveTime=10/12/2020 11:32:24 AM EDT, old hostName=USGWMES-03P-I07, old processName=12824@USGWMES-03P-I07]
+2020-10-13 08:58:46,786 EDT [AWT-EventQueue-0]  INFO ShutDownHookThread:? - Startup of client has been executed by user test user (user18) on work center HCM-018, station HCM-018.
+2020-10-13 09:05:36,691 EDT [Thread-34]  INFO ShutDownHookThread:? - Shutdown of client has been executed by user test user (user18) on work center HCM-018, station HCM-018.
+2020-10-13 09:47:34,159 EDT [AWT-EventQueue-0]  INFO ShutDownHookThread:? - Startup of client has been executed by user test user (user18) on work center HCM-018, station HCM-018.
+2020-10-13 10:22:41,542 EDT [AWT-EventQueue-0]  WARN PhaseLocationIdentificationCheck:58 - ct_AllowedLocationsForIdentfication isn't set
+2020-10-13 10:22:42,948 EDT [AWT-EventQueue-0]  WARN PhaseLocationIdentificationCheck:58 - ct_AllowedLocationsForIdentfication isn't set
+2020-10-13 10:22:43,776 EDT [AWT-EventQueue-0]  WARN ConsumeAndSendConsumptionToSap:445 - No OSI for position 'P-CARTON' found.
+2020-10-13 10:22:45,858 EDT [AWT-EventQueue-0] ERROR DynamicProxyInvocationHandler:150 - Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+com.company.mes.commons.base.ifc.exceptions.MESRuntimeException: Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:461)
+	at com.company.mes.services.packaging.impl.MFCService.releaseIdentification(MFCService.java:399)
+2020-10-13 10:22:45,873 EDT [AWT-EventQueue-0] ERROR DynamicProxyInvocationHandler:150 - Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+com.company.mes.commons.base.ifc.exceptions.MESRuntimeException: Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:461)
+	at com.company.mes.services.packaging.impl.MFCService.releaseIdentification(MFCService.java:399)
+
+2020-10-13 10:22:45,873 EDT [AWT-EventQueue-0] ERROR TransactionInterceptor:281 - Transaction leave performing rollback.
+2020-10-13 10:26:49,208 EDT [AWT-EventQueue-0]  WARN ConsumeAndSendConsumptionToSap:445 - No OSI for position 'P-CARTON' found.
+2020-10-13 10:26:49,599 EDT [AWT-EventQueue-0]  WARN EihOutboundService:155 - Suppress sending when quantity is 0
