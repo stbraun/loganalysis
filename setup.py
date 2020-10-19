@@ -11,11 +11,11 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['jupyter_commons']
+requirements = ['pandas', 'jupyter_commons']
 
 setup_requirements = ['pytest-runner', 'nox']
 
-test_requirements = ['pytest', 'nox']
+test_requirements = ['pytest', 'pytest-asyncio', 'pytest-datadir', 'nox']
 
 setup(
     author="Stefan Braun",

@@ -10,12 +10,12 @@ from loganalysis import loganalysis
 
 @pytest.mark.parametrize(
     "logfile, expected_lines",
-    [("tests/resources/callstack.log", 155), ("tests/resources/unique.log", 50)],
+    [("callstack.log", 155), ("unique.log", 50)],
 )
 @pytest.mark.asyncio
-async def test_read_log(logfile: str, expected_lines: int):
+async def test_read_log(datadir: str, logfile: str, expected_lines: int):
     """Test reading log file."""
-    lines = [line async for line in loganalysis.read_log(logfile)]
+    lines = [line async for line in loganalysis.read_log(datadir / logfile)]
     assert len(lines) == expected_lines
 
 
@@ -30,20 +30,19 @@ async def test_read_log(logfile: str, expected_lines: int):
         ("AnotherClass.hasNoPackage()", "AnotherClass.hasNoPackage()"),
     ],
 )
-def test_de_qualify(qualified, expected):
+def test_de_qualify(qualified: str, expected: str):
     """Test extracting class.method() from qualified name."""
-    expected: str
     assert loganalysis.de_qualify(qualified) == expected
 
 
 @pytest.mark.parametrize(
     "logfile, expected_lines",
-    [("tests/resources/callstack.log", 3), ("tests/resources/unique.log", 0)],
+    [("callstack.log", 3), ("unique.log", 0)],
 )
 @pytest.mark.asyncio
-async def test_extract_info(logfile: str, expected_lines):
+async def test_extract_info(datadir: str, logfile: str, expected_lines):
     """Test extracting info from log file"""
-    info = await loganalysis.extract_info(logfile)
+    info = await loganalysis.extract_info(datadir / logfile)
     # One line holding the name of the logfile is added by the method.
     assert len(info) == expected_lines + 1
     assert all([line.startswith("###") for line in info])
@@ -52,20 +51,20 @@ async def test_extract_info(logfile: str, expected_lines):
 @pytest.mark.parametrize(
     "logfile, regex, with_timestamp, expected_lines, has_group",
     [
-        ("tests/resources/unique.log", r"Shutdown of client", True, 3, False),
-        ("tests/resources/unique.log", r"Shutdown of client", False, 3, False),
-        ("tests/resources/unique.log", r"([^\s]+) - Shutdown of client", True, 3, True),
-        ("tests/resources/unique.log", r"([^\s]+) - Shutdown of client", False, 3,
+        ("unique.log", r"Shutdown of client", True, 3, False),
+        ("unique.log", r"Shutdown of client", False, 3, False),
+        ("unique.log", r"([^\s]+) - Shutdown of client", True, 3, True),
+        ("unique.log", r"([^\s]+) - Shutdown of client", False, 3,
          True),
     ],
 )
 @pytest.mark.asyncio
 async def test_extract_matches(
-    logfile: str, regex: str, with_timestamp: bool, expected_lines: int, has_group: bool
+    datadir: str, logfile: str, regex: str, with_timestamp: bool, expected_lines: int, has_group: bool
 ):
     """Test extracting items matching regular expressions."""
     lines = await loganalysis.extract_matches(
-        logfile, regex, with_timestamp=with_timestamp
+        datadir / logfile, regex, with_timestamp=with_timestamp
     )
     assert len(lines) == expected_lines
     timestamp_rex = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}")
@@ -84,20 +83,20 @@ async def test_extract_matches(
     "logfile, regex, with_timestamp, expected_lines",
     [
         # No group is always with timestamp
-        ("tests/resources/unique.log", r"Shutdown of client", True, 3),
-        ("tests/resources/unique.log", r"Shutdown of client", False, 3),
+        ("unique.log", r"Shutdown of client", True, 3),
+        ("unique.log", r"Shutdown of client", False, 3),
         # With group the with_timestamp flag is evaluated
-        ("tests/resources/unique.log", r"([^\s]+) - Shutdown of client", True, 3),
-        ("tests/resources/unique.log", r"([^\s]+) - Shutdown of client", False, 1),
+        ("unique.log", r"([^\s]+) - Shutdown of client", True, 3),
+        ("unique.log", r"([^\s]+) - Shutdown of client", False, 1),
     ],
 )
 @pytest.mark.asyncio
 async def test_print_matches_unique(
-    logfile: str, regex: str, with_timestamp: bool, expected_lines: int
+    datadir: str, logfile: str, regex: str, with_timestamp: bool, expected_lines: int
 ):
     """Test unique extracting of items matching regular expressions."""
     lines = await loganalysis.print_matches(
-        logfile, regex, with_timestamp=with_timestamp, unique=True
+        datadir / logfile, regex, with_timestamp=with_timestamp, unique=True
     )
     assert len(lines) == expected_lines
 
@@ -106,17 +105,17 @@ async def test_print_matches_unique(
     "logfile, regex, sort, expected_lines",
     [
         # No group is always with timestamp
-        ("tests/resources/unique.log", r"Shutdown of client", False, 3),
-        ("tests/resources/unique.log", r"Shutdown of client", True, 3),
+        ("unique.log", r"Shutdown of client", False, 3),
+        ("unique.log", r"Shutdown of client", True, 3),
     ],
 )
 @pytest.mark.asyncio
 async def test_print_matches_sorted(
-    logfile: str, regex: str, sort: bool, expected_lines: int
+    datadir: str, logfile: str, regex: str, sort: bool, expected_lines: int
 ):
     """Test sorting of extracted items matching regular expressions."""
     lines = await loganalysis.print_matches(
-        logfile, regex, sort=sort
+        datadir / logfile, regex, sort=sort
     )
     assert len(lines) == expected_lines
     if sort:
@@ -127,17 +126,17 @@ async def test_print_matches_sorted(
     "logfile, level, expected_items",
     [
         # No group is always with timestamp
-        ("tests/resources/unique.log", 'ERROR', 5),
-        ("tests/resources/unique.log", ['INFO', 'WARN'], 10),
+        ("unique.log", 'ERROR', 5),
+        ("unique.log", ['INFO', 'WARN'], 10),
     ],
 )
 @pytest.mark.asyncio
 async def test_extract_levels_level(
-    logfile: str, level: any, expected_items: int
+    datadir: str, logfile: str, level: any, expected_items: int
 ):
     """Test extracting items matching specified levels. Verify levels."""
     level_dict: dict[int: (int, str)] = await loganalysis.extract_levels(
-        logfile, level
+        datadir / logfile, level
     )
     assert len(level_dict.keys()) == expected_items
     if isinstance(level, str):
@@ -152,17 +151,17 @@ async def test_extract_levels_level(
     "logfile, level, include_thread, expected_items",
     [
         # No group is always with timestamp
-        ("tests/resources/unique.log", 'ERROR', False, 5),
-        ("tests/resources/unique.log", 'ERROR', True, 5),
+        ("unique.log", 'ERROR', False, 5),
+        ("unique.log", 'ERROR', True, 5),
     ],
 )
 @pytest.mark.asyncio
 async def test_extract_levels_thread(
-    logfile: str, level: any, include_thread: bool, expected_items: int
+    datadir: str, logfile: str, level: any, include_thread: bool, expected_items: int
 ):
     """Test extracting items matching specified levels. Verify thread extraction."""
     level_dict: dict[int: (int, str)] = await loganalysis.extract_levels(
-        logfile, level, include_thread=include_thread
+        datadir / logfile, level, include_thread=include_thread
     )
     assert len(level_dict.keys()) == expected_items
     rex = re.compile(r'^\[[^]]+] ')

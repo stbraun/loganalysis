@@ -15,6 +15,7 @@ pytest = "*"
 pytest-runner = "*"
 pytest-watch = "*"
 pytest-asyncio = "*"
+pytest-datadir = "*"
 
 [packages]
 pandas = "*"
