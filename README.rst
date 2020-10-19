@@ -26,7 +26,10 @@ Functions helping with analysis of log files.
 Features
 --------
 
-* TODO
+* Extract log items matching specified patterns.
+* Extract log items by severity level.
+* Extract callstacks from log file.
+* Read log file into pandas dataframe for further analysis.
 
 Credits
 -------
