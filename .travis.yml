@@ -23,4 +23,5 @@ deploy:
   on:
     tags: true
     repo: stbraun/loganalysis
+    branch: main
     python: 3.8

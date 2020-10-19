@@ -105,3 +105,5 @@ ENV/
 .mypy_cache/
 /reports/flake8.txt
 /reports/unittests.xml
+loganalysis.rst
+modules.rst
