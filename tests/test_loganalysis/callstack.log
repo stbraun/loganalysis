@@ -1,0 +1,155 @@
+### Test log.
+### Logfile focusing on stack traces.
+###
+2020-10-05 03:54:50,735 EDT [AWT-EventQueue-0] ERROR UnexpectedRuntimeExceptionHandler:85 - ### <UNEXPECTED_EXCEPTION> ### An internal error has occurred. Please contact your system administrator.
+java.lang.IllegalStateException: close view, before displaying exception view
+	at com.company.mes.apps.ebr.impl.cockpit.CockpitControllerViewHandling.displayExceptionView(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.displayException(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.run(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.execute(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler.recordException(Unknown Source)
+	at com.company.mes.shared.phasemvc.AbstractPhaseExceptionView0100$1.run(AbstractPhaseExceptionView0100.java:93)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+2020-10-05 03:54:50,746 EDT [AWT-EventQueue-0]  WARN ClientTerminatorService:? - An unhandled exception occurred. Exception is of type java.lang.IllegalStateException: java.lang.IllegalStateException: close view, before displaying exception view
+java.lang.IllegalStateException: close view, before displaying exception view
+	at com.company.mes.apps.ebr.impl.cockpit.CockpitControllerViewHandling.displayExceptionView(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.displayException(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.run(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler$PerformSystemTriggeredExceptionRunner.execute(Unknown Source)
+	at com.company.mes.apps.ebr.ifc.phase.ui.PhaseSystemTriggeredExceptionHandler.recordException(Unknown Source)
+	at com.company.mes.shared.phasemvc.AbstractPhaseExceptionView0100$1.run(AbstractPhaseExceptionView0100.java:93)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+2020-10-05 03:55:11,324 EDT [Thread-34]  INFO ShutDownHookThread:? - Shutdown of client.
+2020-10-09 09:34:23,502 EDT [Background-workerthread-1] ERROR DynamicProxyInvocationHandler:150 - Thread waiting for message reply was interrupted
+Equipment details:[Identifier:IBOX-018 AIServerName:AutomationIntegrationServer1 LDAreaPath:RNA://$Global/LiveDataArea Description:HCM Sorter 01]
+com.company.mes.services.s88equipment.ifc.exceptions.AutomationInterruptedException: Thread waiting for message reply was interrupted
+Equipment details:[Identifier:IBOX-018 AIServerName:AutomationIntegrationServer1 LDAreaPath:RNA://$Global/LiveDataArea Description:HCM Sorter 01]
+	at com.company.mes.services.s88equipment.impl.automation.AutomationService.monitorValue(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor643.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.company.mes.commons.base.ifc.services.DynamicProxyInvocationHandler.invoke(DynamicProxyInvocationHandler.java:101)
+	at com.sun.proxy.$Proxy78.monitorValue(Unknown Source)
+	at com.company.mes.shared.ai.tagdata.AITagData0100.monitorFromAI(AITagData0100.java:467)
+	at com.company.mes.phase.eqaimonnumeric.RtPhaseExecutorEqAIMonNumeric0100$MonitorTask0100.call(RtPhaseExecutorEqAIMonNumeric0100.java:180)
+	at com.company.mes.phase.eqaimonnumeric.RtPhaseExecutorEqAIMonNumeric0100$MonitorTask0100.call(RtPhaseExecutorEqAIMonNumeric0100.java:160)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2020-10-09 09:35:51,809 EDT [Thread-34]  INFO ShutDownHookThread:? - Shutdown of client has been executed by user test user (user18) on work center HCM-018, station HCM-018.
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+com.company.mes.commons.base.ifc.exceptions.MESRuntimeException: Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:461)
+	at com.company.mes.services.packaging.impl.MFCService.releaseIdentification(MFCService.java:399)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.company.mes.commons.base.ifc.services.DynamicProxyInvocationHandler.invoke(DynamicProxyInvocationHandler.java:101)
+	at com.sun.proxy.$Proxy90.releaseIdentification(Unknown Source)
+	at com.company.mes.services.wip.impl.OrderStepExIdentificationAndConsumption.consumePacketAttachedToOrderStepInput(OrderStepExIdentificationAndConsumption.java:1274)
+	at com.company.mes.services.wip.impl.OrderStepExIdentificationAndConsumption.consumePacketAttachedToOrderStepInput(OrderStepExIdentificationAndConsumption.java:1165)
+	at com.company.mes.services.wip.impl.OrderStepExecutionService.consumePacketAttachedToOrderStepInput(OrderStepExecutionService.java:354)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.company.mes.commons.base.ifc.services.DynamicProxyInvocationHandler.invoke(DynamicProxyInvocationHandler.java:101)
+	at com.sun.proxy.$Proxy82.consumePacketAttachedToOrderStepInput(Unknown Source)
+	at com.company.mmb.ftps.phase.generatereport0100.report.ConsumeAndSendConsumptionToSap.generateReport(ConsumeAndSendConsumptionToSap.java:283)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: PlatformException with 1 errors
+	at com.platform.compatibility.utility.ErrorHandling.createPlatformException(Unknown Source)
+	at com.platform.compatibility.utility.ErrorHandling.createPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.ExceptionHandling.toPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.ObjectManager.toPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.PacketManager.saveToDB(Unknown Source)
+	at com.platform.compatibility.manager.ObjectManager.save(Unknown Source)
+	at com.platform.compatibility.client.Packet.save_(Unknown Source)
+	at com.platform.compatibility.client.Categorical.Save(Unknown Source)
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:459)
+	... 52 more
+2020-10-13 10:22:45,873 EDT [AWT-EventQueue-0] ERROR DynamicProxyInvocationHandler:150 - Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+com.company.mes.commons.base.ifc.exceptions.MESRuntimeException: Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:461)
+	at com.company.mes.services.packaging.impl.MFCService.releaseIdentification(MFCService.java:399)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: PlatformException with 1 errors
+	at com.platform.compatibility.utility.ErrorHandling.createPlatformException(Unknown Source)
+	at com.platform.compatibility.utility.ErrorHandling.createPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.ExceptionHandling.toPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.ObjectManager.toPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.PacketManager.saveToDB(Unknown Source)
+	at com.platform.compatibility.manager.ObjectManager.save(Unknown Source)
+	at com.platform.compatibility.client.Packet.save_(Unknown Source)
+	at com.platform.compatibility.client.Categorical.Save(Unknown Source)
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:459)
+	... 52 more
+2020-10-13 10:22:45,873 EDT [AWT-EventQueue-0] ERROR ConsumeAndSendConsumptionToSap:330 - com.company.mes.commons.base.ifc.exceptions.MESRuntimeException: Error when saving sublot: SL00000018
+Underlying exception details: PlatformException with 1 errors:
+Error Msg #1 SQL Exception message: IJ031070: Transaction cannot proceed: STATUS_MARKED_ROLLBACK
+	at com.company.mes.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:461)
+	at com.company.mes.services.packaging.impl.MFCService.releaseIdentification(MFCService.java:399)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.company.mes.commons.base.ifc.services.DynamicProxyInvocationHandler.invoke(DynamicProxyInvocationHandler.java:101)
+	at com.sun.proxy.$Proxy90.releaseIdentification(Unknown Source)
+	at com.company.mes.services.wip.impl.OrderStepExIdentificationAndConsumption.consumePacketAttachedToOrderStepInput(OrderStepExIdentificationAndConsumption.java:1274)
+	at com.company.mes.services.wip.impl.OrderStepExIdentificationAndConsumption.consumePacketAttachedToOrderStepInput(OrderStepExIdentificationAndConsumption.java:1165)
+	at com.company.mes.services.wip.impl.OrderStepExecutionService.consumePacketAttachedToOrderStepInput(OrderStepExecutionService.java:354)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: PlatformException with 1 errors
+	at com.platform.compatibility.utility.ErrorHandling.createPlatformException(Unknown Source)
+	at com.platform.compatibility.utility.ErrorHandling.createPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.ExceptionHandling.toPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.ObjectManager.toPlatformException(Unknown Source)
+	at com.platform.compatibility.manager.PacketManager.saveToDB(Unknown Source)
+	at com.platform.compatibility.manager.ObjectManager.save(Unknown Source)
+	at com.platform.compatibility.client.Packet.save_(Unknown Source)
+	at com.platform.compatibility.client.Categorical.Save(Unknown Source)
+	at com.company.product.services.packaging.impl.MFCService.updateIdentificationData(MFCService.java:459)
+	... 52 more
+
+2020-10-13 10:22:45,873 EDT [AWT-EventQueue-0] ERROR TransactionInterceptor:281 - Transaction leave performing rollback.
+2020-10-13 10:26:49,208 EDT [AWT-EventQueue-0]  WARN ConsumeAndSendConsumptionToSap:445 - No OSI for position 'P-CARTON' found.
+2020-10-13 10:26:49,599 EDT [AWT-EventQueue-0]  WARN EihOutboundService:155 - Suppress sending when quantity is 0
