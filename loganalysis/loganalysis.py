@@ -77,7 +77,7 @@ async def print_info(log_file):
         print(f"    {line}")
 
 
-async def extract_matches(log_file, regex, with_timestamp=False):
+async def extract_matches(log_file, regex, with_timestamp=False, ignore_groups=False):
     """Extract lines matching given regular expression.
 
     If there is a group specified in regex, only the group is extracted. If
@@ -89,6 +89,9 @@ async def extract_matches(log_file, regex, with_timestamp=False):
     :type regex: str
     :param with_timestamp: True to prepend log timestamp in case of group match.
     :type with_timestamp: bool
+    :param ignore_groups: if true ignore groups and extract whole lines. Useful if a
+    regex is re-used and if it contains conditional expressions, e.g. "(aaa|bbb)".
+    :type ignore_groups: bool
     :return: list of matching lines.
     :rtype: [str]
     """
@@ -96,7 +99,7 @@ async def extract_matches(log_file, regex, with_timestamp=False):
     async for line in read_log(log_file):
         result = re.search(regex, line)
         if result:
-            if len(result.groups()) > 0:
+            if not ignore_groups and len(result.groups()) > 0:
                 results = list(result.groups())
                 if with_timestamp:
                     ts = extract_timestamp(line)
@@ -108,7 +111,13 @@ async def extract_matches(log_file, regex, with_timestamp=False):
 
 
 async def print_matches(
-    log_file, regex, sort=False, unique=False, msg=None, with_timestamp=False
+    log_file,
+    regex,
+    sort=False,
+    unique=False,
+    msg=None,
+    with_timestamp=False,
+    ignore_groups=False,
 ):
     """Print lines matching given regular expression.
 
@@ -126,11 +135,16 @@ async def print_matches(
     :type msg: str
     :param with_timestamp: True to prepend log timestamp.
     :type with_timestamp: bool
+    :param ignore_groups: if true ignore groups and extract whole lines. Useful if a
+    regex is re-used and if it contains conditional expressions, e.g. "(aaa|bbb)".
+    :type ignore_groups: bool
     :return: matched lines
     :rtype: [str]
     """
     unique_lines = None
-    lines = await extract_matches(log_file, regex, with_timestamp)
+    lines = await extract_matches(
+        log_file, regex, with_timestamp=with_timestamp, ignore_groups=ignore_groups
+    )
     if msg is None:
         msg = f"regex '{regex}'"
     if unique:
