@@ -2,13 +2,18 @@
 
 language: python
 python:
+  - 3.7
   - 3.8
+  - 3.9
+
 before_install:
-    - pip install -U pipenv
-    - pipenv install --dev
-install: skip
+    - pip install --upgrade pip
+    - pip install pipenv
+    - pipenv lock -r > requirements.txt
+install: pip install -r requirements.txt
 script:
-    - nox
+    - make lint
+    - make test
 
 # Assuming you have installed the travis-ci CLI tool, after you
 # create the Github repo and add it to Travis, run the
@@ -24,4 +29,4 @@ deploy:
     tags: true
     repo: stbraun/loganalysis
     branch: main
-    python: 3.8
+    python: 3.9
