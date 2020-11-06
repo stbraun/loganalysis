@@ -106,3 +106,4 @@ ENV/
 reports/
 docs/loganalysis.rst
 docs/modules.rst
+/requirements.txt
