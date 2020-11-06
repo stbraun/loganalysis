@@ -9,8 +9,8 @@ python:
 before_install:
     - pip install --upgrade pip
     - pip install pipenv
-    - pipenv lock --dev --requirements > requirements.txt
-install: pip install -r requirements.txt
+    - pipenv install --dev
+install: skip
 script:
     - make lint
     - python setup.py test
