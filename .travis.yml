@@ -12,8 +12,8 @@ before_install:
     - pipenv install --dev
 install: skip
 script:
-    - make lint
-    - python setup.py test
+    - pipenv run make lint
+    - pipenv run python setup.py test
 
 # Assuming you have installed the travis-ci CLI tool, after you
 # create the Github repo and add it to Travis, run the
