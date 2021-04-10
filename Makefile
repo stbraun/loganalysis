@@ -33,7 +33,7 @@ TEST_REPORT = $(REPORTS_DIR)unittests.xml
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
+clean: clean-build clean-dev clean-test ## remove all build, test, coverage and Python artifacts
 
 clean-build: ## remove build artifacts
 	rm -fr build/
@@ -48,6 +48,8 @@ clean-dev: ## remove development file artifacts
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 	find . -name '*~' -exec rm -f {} +
+	find . -name '.*~' -exec rm -f {} +
+	find . -name '*.*~' -exec rm -f {} +
 
 clean-test: ## remove test and coverage artifacts
 	rm -fr .tox/

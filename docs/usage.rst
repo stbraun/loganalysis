@@ -4,6 +4,8 @@ Usage
 
 `loganalysis` is primarily meant to be used within a jupyter notebook. But it can also be used with a script if the output shall be streamed into another process for further evaluation.
 
+Be aware that the functions in this package are asynchronous. That means you must put `await` in front of each call.
+
 To use `loganalysis` in a project::
 
     import loganalysis as la

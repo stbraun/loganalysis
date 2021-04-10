@@ -8,7 +8,7 @@ import re
 from jupyter_commons.output import print_md
 
 
-encoding = 'utf8'
+encoding = 'utf-8'
 
 
 async def read_log(log_file):
@@ -185,9 +185,9 @@ async def extract_levels(log_file, levels, include_thread=True):
     log_id = 0
     levels_ = levels if isinstance(levels, str) else "|".join(levels)
     if include_thread:
-        rex = rf"\s(\[[\w\-]+\]\s+({levels_})\s.*$)"
+        rex = rf"\s(\[[\w\d\s_\-]+\]\s+({levels_})\s.*$)"
     else:
-        rex = rf"\s\[[\w\-]+\]\s+(({levels_})\s.*$)"
+        rex = rf"\s\[[\w\d\s_\-]+\]\s+(({levels_})\s.*$)"
     async for line in read_log(log_file):
         result = re.search(rex, line)
         if result:
