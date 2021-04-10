@@ -11,4 +11,5 @@ History
 ------------------
 
 * Encoding of log file is configurable.
+* extract_level works for thread names containing blanks.
 
