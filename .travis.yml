@@ -3,7 +3,6 @@
 language: python
 python:
   - 3.8
-  - 3.9
 
 before_install:
     - pip install --upgrade pip
@@ -28,4 +27,4 @@ deploy:
     tags: true
     repo: stbraun/loganalysis
     branch: main
-    python: 3.9
+    python: 3.8
