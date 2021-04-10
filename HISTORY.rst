@@ -6,3 +6,9 @@ History
 ------------------
 
 * First release on PyPI.
+  
+0.1.3 (2021-04-10)
+------------------
+
+* Encoding of log file is configurable.
+

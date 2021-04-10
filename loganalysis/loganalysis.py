@@ -8,6 +8,9 @@ import re
 from jupyter_commons.output import print_md
 
 
+encoding = 'utf8'
+
+
 async def read_log(log_file):
     """Read log file.
 
@@ -16,7 +19,7 @@ async def read_log(log_file):
     :param log_file: path to log file.
     :type log_file: str
     """
-    with open(log_file, "r") as fd:
+    with open(log_file, "r", encoding=encoding) as fd:
         more = True
         while more:
             try:
@@ -90,7 +93,7 @@ async def extract_matches(log_file, regex, with_timestamp=False, ignore_groups=F
     :param with_timestamp: True to prepend log timestamp in case of group match.
     :type with_timestamp: bool
     :param ignore_groups: if true ignore groups and extract whole lines. Useful if a
-    regex is re-used and if it contains conditional expressions, e.g. "(aaa|bbb)".
+        regex is re-used and if it contains conditional expressions, e.g. "(aaa|bbb)".
     :type ignore_groups: bool
     :return: list of matching lines.
     :rtype: [str]
@@ -136,7 +139,7 @@ async def print_matches(
     :param with_timestamp: True to prepend log timestamp.
     :type with_timestamp: bool
     :param ignore_groups: if true ignore groups and extract whole lines. Useful if a
-    regex is re-used and if it contains conditional expressions, e.g. "(aaa|bbb)".
+        regex is re-used and if it contains conditional expressions, e.g. "(aaa|bbb)".
     :type ignore_groups: bool
     :return: matched lines
     :rtype: [str]
